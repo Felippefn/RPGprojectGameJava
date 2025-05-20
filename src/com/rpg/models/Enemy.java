@@ -4,10 +4,12 @@ public class Enemy extends BaseEntity {
 
     private int xp;
     private float rarity;
+    private int coins;
 
-    public Enemy(String name, int health, int attack, int defense, float speed, float level, int xp, float rarity) {
-        super(name, health, attack, defense, speed, level);
+    public Enemy(String name, int health, int attack, int defense, float speed, float level, int xp, int rarity, int coins) {
+    	super(name, health, attack, defense, speed, level);
         this.xp = xp;
+        this.coins = coins;
         this.rarity = rarity;
     }
 
@@ -17,5 +19,16 @@ public class Enemy extends BaseEntity {
 
     public float getRarity() {
         return rarity;
+    }
+    
+    public int getCoins() {
+    	return coins;
+    }
+    
+    @Override
+    public String toString() {
+        return getName() + " [HP=" + getHealth() + ", ATK=" + getAttack() +
+               ", DEF=" + getDefense() + ", XP=" + xp + ", Coins=" + coins +
+               ", Rarity=" + rarity + "]";
     }
 }
