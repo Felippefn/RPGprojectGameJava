@@ -11,4 +11,9 @@ public class Item {
 	    this.type = type;
 	    this.value = value;
 	}
+
+	public String getName() {return name;}
+	public String getType() {return type;}
+	public int getValue() {return value;}
+
 }

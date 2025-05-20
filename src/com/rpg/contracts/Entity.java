@@ -8,6 +8,7 @@ public interface Entity {
     float getSpeed();
     float getLevel();
 
+
     void takeDamage(int amount);
     boolean isAlive();
 }
