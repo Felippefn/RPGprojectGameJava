@@ -4,6 +4,7 @@ import com.rpg.models.*;
 //import com.rpg.services.Inventory;
 import com.rpg.utils.EnemyManager;
 import com.rpg.utils.ItemManager;
+import com.rpg.services.BattleService;
 
 
 import java.util.Scanner;
@@ -15,11 +16,13 @@ public class GameEngine {
     private Scanner scanner;
     private EnemyManager enemyManager;
     private ItemManager itemManager;
+    private BattleService battleService;
 
     public GameEngine() {
         scanner = new Scanner(System.in);
         enemyManager = new EnemyManager();
         itemManager = new ItemManager();
+        battleService = new BattleService(this); // pass GameEngine to it
     }
     
     
@@ -57,9 +60,10 @@ public class GameEngine {
     private void mainMenu() {
     	while(player.isAlive()) {
     		System.out.println("\n-- Main Menu --");
-            System.out.println("1. Explore");
-            System.out.println("2. Go to city");
-            System.out.println("3. Exit");
+            System.out.println("1. Open Inventory");
+            System.out.println("2. Explore dark woods");
+            System.out.println("3. Go to Shop in City");
+            System.out.println("4. Exit");
             System.out.print("Choose an action: ");
             
             int choice = scanner.nextInt();
@@ -67,13 +71,17 @@ public class GameEngine {
             
             switch(choice) {
             case 1:
-                showInventory();
+                System.out.println(showInventory()); 
                 break;
             case 2:
-                fightEnemy();
+                encountersEnemy();
                 break;
             case 3:
-                System.out.println("Thanks for playing!");
+            	
+                break;
+            case 4:
+            	System.out.println("Thanks for playing!");
+                summaryStats();
                 return;
             default:
                 System.out.println("Invalid choice.");
@@ -81,23 +89,27 @@ public class GameEngine {
     	}
     }
     
-    public void showInventory() {
-    	System.out.println("-- Your Inventory --");
-    	  if (player.getInventory().getItems().isEmpty()) {
-    		  System.out.println("You have no items.");
-    	  } else {
-    		  player.getInventory().getItems().forEach(item -> System.out.println("- " + item.getName()));
-    	  }
-    		  
+    public String showInventory() {
+        StringBuilder inventoryText = new StringBuilder("-- Your Inventory --\n");
+        if (player.getInventory().getItems().isEmpty()) {
+            inventoryText.append("You have no items.");
+        } else {
+            player.getInventory().getItems().forEach(item -> 
+                inventoryText.append("- ").append(item.getName()).append("\n"));
+        }
+        return inventoryText.toString();
     }
-    private void fightEnemy() {
+
+    private void encountersEnemy() {
         Enemy enemy = enemyManager.getRandomEnemy();
         System.out.println("You encountered a " + enemy.getName() + " with " + enemy.getHealth() + " HP!");
-
-        System.out.println("You defeated the enemy!");
+        
+        
         Item loot = itemManager.getRandomItem();
         System.out.println("You received a loot item: " + loot.getName());
         player.addToInventory(loot);
+        
+        battleService.startBattle(player, enemy);
     }
     
     void summaryStats() {
