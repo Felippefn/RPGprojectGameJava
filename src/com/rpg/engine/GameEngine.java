@@ -64,7 +64,7 @@ public class GameEngine {
             System.out.println("2. Explore dark woods");
             System.out.println("3. Go to Shop in City");
             System.out.println("4. Exit");
-            System.out.print("Choose an action: ");
+            System.out.print("\nChoose an action: ");
             
             int choice = scanner.nextInt();
             scanner.nextLine(); // consume newline
@@ -77,7 +77,7 @@ public class GameEngine {
                 encountersEnemy();
                 break;
             case 3:
-            	
+            	System.out.println("yygy");
                 break;
             case 4:
             	System.out.println("Thanks for playing!");
@@ -113,6 +113,6 @@ public class GameEngine {
     }
     
     void summaryStats() {
-    	System.out.printf("Your character is resting in peace with:\n-%d HP\n-Level %d", player.getHealth(), player.getLevel()); 
+    	System.out.printf("Your character is resting in peace with:\n-%d HP\n-Level %f", player.getHealth(), player.getLevel()); 
     }
 }

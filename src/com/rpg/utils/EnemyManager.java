@@ -20,10 +20,10 @@ public class EnemyManager {
     }
 
     public Enemy getRandomEnemy() {
-    	System.out.println(random.nextInt(101));
+    	/*System.out.println(random.nextInt(101));
     	for (int i =0; i<enemies.size(); i++) {
     		System.out.println(enemies.get(i).getRarity());
-    	}
+    	} */
         return enemies.get(random.nextInt(enemies.size()));
     	 
     }

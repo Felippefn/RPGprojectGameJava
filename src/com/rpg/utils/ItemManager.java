@@ -7,11 +7,11 @@ import java.util.List;
 import java.util.Random;
 
 public class ItemManager {
-    private List<Item> items;
+    private List<Item> itemsLoot;
     private Random random = new Random();
 
     public ItemManager() {
-        items = Arrays.asList(
+        itemsLoot = Arrays.asList(
             new Item("Health Potion", "Health", 100),
             new Item("Iron Sword", "Combat", 30),
             new Item("Leather Armor", "Combat", 20),
@@ -20,6 +20,6 @@ public class ItemManager {
     }
 
     public Item getRandomItem() {
-        return items.get(random.nextInt(items.size()));
+        return itemsLoot.get(random.nextInt(itemsLoot.size()));
     }
 }

@@ -21,6 +21,7 @@ public class Player extends BaseEntity {
         attack += 2;
         defense += 1;
         health += 10;
+        speed +=1;
     }
     public void addToInventory(Item item) {
         inventory.addItem(item);

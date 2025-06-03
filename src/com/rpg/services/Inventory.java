@@ -15,11 +15,11 @@ public class Inventory {
 
     public void addItem(Item item) {
         items.add(item);
-        System.out.println("An Item was added to your intenvory: " + item);
+        System.out.println("An Item was added to your intenvory: " + item.getName());
     }
 
     public boolean removeItem(Item item) {
-    	System.out.printf("%s was removed from your inventory", item);
+    	System.out.printf("%s was removed from your inventory", item.getName());
         return items.remove(item);
     }
 
