@@ -47,10 +47,12 @@ public class BattleService {
 		}
 		
 	}
-	
+	private void playerCurrentStatusTurn() {
+		
+	}
 	private void playerTurn(Player player, Enemy enemy) {
 		System.out.println("========================================\n");
-		System.out.println("Your turn!");
+		System.out.println("Your turn!\n");
 		System.out.printf("\nChoose your move against %s !"
 				+ "\n================================"
 				+ "\n> 1- Attack\n> 2- Item\n> 3- Run\n"
@@ -101,9 +103,10 @@ public class BattleService {
 		int chancesCrit = random.nextInt(21);
 		if (chancesCrit > 16) {
 			damage *= crit;
+			System.out.println("Enemy got a Crit Hit!");
 		}
 		player.takeDamage(damage);
-		
+		System.out.printf("%s hit you with %d damage", enemy.getName(), damage);
 	}
 	
 }
