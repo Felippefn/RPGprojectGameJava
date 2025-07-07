@@ -47,11 +47,12 @@ public class BattleService {
 		}
 		
 	}
-	private void playerCurrentStatusTurn() {
-		
+	private void playerCurrentStatusTurn() { // WTF is this
+		System.out.println("aaa");
 	}
 	private void playerTurn(Player player, Enemy enemy) {
 		System.out.println("========================================\n");
+		playerCurrentStatusTurn(); //Remove this please
 		System.out.println("Your turn!\n");
 		System.out.printf("\nChoose your move against %s !"
 				+ "\n================================"
